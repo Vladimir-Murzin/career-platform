@@ -2,6 +2,7 @@ import React from 'react';
 import RegisterPage from './pages/RegisterPage/RegisterPage';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import LoginPage from './pages/LoginPage/LoginPage';
+import MainPage from './pages/MainPage/MainPage';
 
 function App() {
   return (
@@ -12,9 +13,13 @@ function App() {
             path="/register-page"
             element={<RegisterPage/>}
           />
-          <Route 
+          <Route
             path="/login-page"
             element={<LoginPage/>}
+          />
+          <Route
+            path="/"
+            element={<MainPage/>}
           />
         </Routes>
       </div>
