@@ -12,6 +12,10 @@ function App() {
             path="/register-page"
             element={<RegisterPage/>}
           />
+          <Route 
+            path="/login-page"
+            element={<LoginPage/>}
+          />
         </Routes>
       </div>
       
