@@ -11,6 +11,7 @@ export interface AuthState {
     },
     token: string,
     registerStatus: FetchStatus,
+    errorMessage: string,
 }
 
 const initialState: AuthState = {
@@ -22,6 +23,7 @@ const initialState: AuthState = {
     },
     token: '',
     registerStatus: FetchStatus.Initial,
+    errorMessage: ''
 }
 
 export const authSlice = createSlice({
@@ -40,11 +42,13 @@ export const authSlice = createSlice({
             email: '',
             location: '',
           };
+          state.errorMessage = '';
         })
         builder.addCase(registerThunk.fulfilled, (state, action) => {
             state.registerStatus = FetchStatus.Success;
-            state.token = action.payload.data.token;
-            state.user = action.payload.data.user;
+            state.token = action.payload.token;
+            state.user = action.payload.user;
+            state.errorMessage = '';
         })
         builder.addCase(registerThunk.rejected, (state, action) => {
             state.registerStatus = FetchStatus.Error;
@@ -54,7 +58,9 @@ export const authSlice = createSlice({
                 lastName: '',
                 email: '',
                 location: '',
-            }
+            };
+            console.log('registerThunk', action)
+            state.errorMessage = action.error.message || 'Unknown error';
         })
       },
 })
