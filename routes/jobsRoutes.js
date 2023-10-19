@@ -22,6 +22,7 @@ router.get("/job-stats", userAuth, jobStatsController);
 
 export default router;
 
+
 /**
  * @swagger
  * components:
@@ -168,12 +169,14 @@ export default router;
  *               properties:
  *                 totalJobs:
  *                   type: integer
+ *                   example: 1
  *                 jobs:
  *                   type: array
  *                   items:
  *                     $ref: '#/components/schemas/Job'
  *                 numOfPage:
  *                   type: integer
+ *                   example: 1
  *       401:
  *         description: Unauthorized - Auth Failed
  *       500:
@@ -256,6 +259,7 @@ export default router;
  *               properties:
  *                 message:
  *                   type: string
+ *                   example: Success, job deleted!
  *       401:
  *         description: Unauthorized - Auth Failed
  *       404:
